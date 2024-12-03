@@ -5,9 +5,32 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>JS project</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+<div class="container">
+    <h2>Test</h2>
+    <div class="box-content">
+        <div class="input-container">
+            <div class="input-wrapper">
+                <label for="addPair">Name/Value Pair</label>
+                <input type="text" name="addPair" id="addPair" placeholder="Name=Value">
+            </div>
+            <button id="addButton">Add</button>
+        </div>
+        <div class="list-container">
+            <div class="list-content">
+                <label for="pairList">Name/Value Pair List</label>
+                <div id="pairList"></div>
+            </div>
+            <div class="buttons-container">
+                <button id="sortByName">Sort by Name</button>
+                <button id="sortByValue">Sort by Value</button>
+                <button id="deleteSelected">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
