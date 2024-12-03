@@ -11,7 +11,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     background-color: #7eb4ff;
 }
 
@@ -28,31 +27,52 @@ body {
 .box-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     margin-top: 30px;
 }
 
 .input-container {
     display: flex;
     align-items: end;
-    gap: 10px;
+    gap: 20px;
 }
 
 .input-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 500px;
 }
 
 label {
-    font-weight: bold;
-    margin-right: 10px;
+    font-size: 14px;
+    color: #a5a5a5;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
 }
 
 #pairList {
     border: 1px solid #ccc;
     padding: 10px;
-    min-height: 50px;
-    margin-top: 5px;
+    min-height: 200px;
+}
+
+#addButton {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addButton:hover {
+    background-color: #45a049;
 }
 
 .list-container {
@@ -62,8 +82,36 @@ label {
     gap: 20px;
 }
 
+.list-content {
+    width: 100%;
+    max-width: 500px;
+}
+
 .buttons-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.buttons-container button {
+    padding: 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons-container button:hover {
+    background-color: #e53935;
+}
+
+@media screen and (max-width: 767px) {
+    .list-container {
+        flex-direction: column;
+    }
+
+    .buttons-container {
+        width: 100%;
+    }
 }
