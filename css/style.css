@@ -13,7 +13,12 @@ body {
     height: 100vh;
     background-color: #7eb4ff;
 }
-
+.error-message {
+    display: none;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
 .container {
     background: #fff;
     padding: 40px;
