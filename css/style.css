@@ -13,12 +13,14 @@ body {
     height: 100vh;
     background-color: #7eb4ff;
 }
+
 .error-message {
     display: none;
     color: red;
     font-size: 12px;
     margin-top: 5px;
 }
+
 .container {
     background: #fff;
     padding: 40px;
@@ -112,11 +114,30 @@ input[type="text"] {
 }
 
 @media screen and (max-width: 767px) {
+    .container {
+        padding: 20px;
+    }
+
     .list-container {
         flex-direction: column;
     }
 
+    .input-wrapper,
+    .list-content {
+        max-width: unset;
+    }
+
     .buttons-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .input-container {
+        flex-direction: column;
+    }
+
+    #addButton {
         width: 100%;
     }
 }
