@@ -24,7 +24,7 @@ document.getElementById("addButton").addEventListener("click", () => {
 
     // Check if the input field is empty
     if (!inputValue) {
-        showError("Field cannot be empty. Please enter a Name/Value pair.");
+        showError("Field cannot be empty. Please enter a Name/Value Pair.");
         return;
     }
 
@@ -42,6 +42,7 @@ document.getElementById("addButton").addEventListener("click", () => {
         return;
     }
 
+    // Check for alphanumeric characters
     let alphanumericRegex = /^[a-zA-Z0-9]+$/;
     if (!alphanumericRegex.test(rawName) || !alphanumericRegex.test(rawValue)) {
         showError("Invalid characters! Name and Value must contain only alphanumeric characters.");
