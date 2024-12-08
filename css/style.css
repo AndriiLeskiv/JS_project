@@ -28,7 +28,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     width: 100%;
-    max-width: 700px;
+    max-width: 750px;
 }
 
 .box-content {
@@ -97,11 +97,20 @@ input[type="text"] {
     max-width: 500px;
 }
 
+.pair-item {
+    cursor: context-menu;
+}
+
+.pair-item.active {
+    color: #fff;
+    background-color: #f44336;
+}
+
 .buttons-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 21px;
 }
 
 .buttons-container button {
