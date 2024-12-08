@@ -1,8 +1,8 @@
 let nameValuePairs = [];
 window.onload = function () {
-    const storedData = localStorage.getItem("nameValuePairs");
-    if (storedData) {
-        nameValuePairs = JSON.parse(storedData);
+    let storageData = localStorage.getItem("nameValuePairs");
+    if (storageData) {
+        nameValuePairs = JSON.parse(storageData);
         renderPairs();
     }
 }
@@ -28,26 +28,16 @@ document.getElementById("addButton").addEventListener("click", () => {
         return;
     }
 
-    // Check if the input contains an equal sign '='
-    if (!inputValue.includes("=")) {
-        showError("Invalid format! Pair must contain an equal sign '='.");
+    // Check the input format
+    let alphanumericRegex = /^\s*([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)\s*$/;
+    if (!alphanumericRegex.test(inputValue)) {
+        showError('Invalid format! Please use "Name=Value" with alphanumeric characters.');
         return;
     }
 
     const [rawName, rawValue] = inputValue.split("=").map(str => str.trim());
-
-    // Checking if name and value are not empty
-    if (!rawName || !rawValue) {
-        showError("Invalid format! Name and Value must not be empty.");
-        return;
-    }
-
-    // Check for alphanumeric characters
-    let alphanumericRegex = /^[a-zA-Z0-9]+$/;
-    if (!alphanumericRegex.test(rawName) || !alphanumericRegex.test(rawValue)) {
-        showError("Invalid characters! Name and Value must contain only alphanumeric characters.");
-        return;
-    }
+    console.log(rawName);
+    console.log(rawValue);
 
     // Add the valid Name/Value pair to the array
     nameValuePairs.push({name: rawName, value: rawValue});
@@ -57,13 +47,30 @@ document.getElementById("addButton").addEventListener("click", () => {
     showError("");
     renderPairs();
     saveToLocalStorage();
+
+    // Check if the input contains an equal sign '='
+    // if (!inputValue.includes("=")) {
+    //     showError("Invalid format! Pair must contain an equal sign '='.");
+    //     return;
+    // }
+    // Checking if name and value are not empty
+    // if (!rawName || !rawValue) {
+    //     showError("Invalid format! Name and Value must not be empty.");
+    //     return;
+    // }
+    // // Check for alphanumeric characters
+    // let alphanumericRegex = /^[a-zA-Z0-9]+$/;
+    // if (!alphanumericRegex.test(rawName) || !alphanumericRegex.test(rawValue)) {
+    //     showError("Invalid characters! Name and Value must contain only alphanumeric characters.");
+    //     return;
+    // }
 });
 
 function renderPairs() {
     let pairList = document.getElementById("pairList");
     pairList.innerHTML = "";
     for (const item of nameValuePairs) {
-        const pairDiv = document.createElement("div");
+        const pairDiv = document.createElement("li");
         pairDiv.classList.add("pair-item");
         pairDiv.innerHTML = `${item.name}=${item.value}`;
         pairList.appendChild(pairDiv);
@@ -89,13 +96,15 @@ document.getElementById("sortByValue").addEventListener("click", () => {
     renderPairs();
     saveToLocalStorage();
 });
+//
+// document.getElementById("deleteSelected").addEventListener("click", () => {
+//     nameValuePairs = [];
+//     renderPairs();
+//     saveToLocalStorage();
+// });
+//
 
-document.getElementById("deleteSelected").addEventListener("click", () => {
-    nameValuePairs = [];
-    renderPairs();
-    saveToLocalStorage();
-});
-
+// Function save array to LocalStorage
 function saveToLocalStorage() {
     localStorage.setItem("nameValuePairs", JSON.stringify(nameValuePairs));
 }
